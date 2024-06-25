@@ -6,7 +6,7 @@ public partial class CardState : Node
     public enum State { Base, Clicked, Dragging, Aiming, Released}
 
     [Signal]
-    public delegate void TransitionRequestedEventHandler(CardState from, State to);
+    public delegate void TransitionRequestedEventHandler(CardState from, int to);
 
     [Export]
     public State state;

@@ -17,12 +17,11 @@ public partial class CardStateMachine : Node
             if (child != null)
             {
                 _states[child.state] = child;
-                child.Connect(nameof(OnTransitionRequested), new Callable(this, MethodName.OnTransitionRequested));
+                child.Connect(nameof(CardState.TransitionRequested), new Callable(this, nameof(OnTransitionRequested)));
                 child.card_ui = card;
             }
         }
-        
-        if(IntialState != null)
+        if (IntialState != null)
         {
             IntialState.Enter();
             _currentState = IntialState;

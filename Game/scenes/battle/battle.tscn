@@ -22,7 +22,7 @@ collision_layer = 2
 position = Vector2(128, 50)
 shape = SubResource("RectangleShape2D_1hmb3")
 
-[node name="BattleUI" type="CanvasLayer" parent="."]
+[node name="BattleUI" type="CanvasLayer" parent="." groups=["UI_Layer"]]
 
 [node name="Hand" type="HBoxContainer" parent="BattleUI"]
 anchors_preset = 7
@@ -30,11 +30,12 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -41.5
+offset_left = -75.0
 offset_top = -30.0
-offset_right = 108.5
+offset_right = 75.0
 grow_horizontal = 2
 grow_vertical = 0
+alignment = 1
 
 [node name="CardUI" parent="BattleUI/Hand" instance=ExtResource("2_sle41")]
 layout_mode = 2
