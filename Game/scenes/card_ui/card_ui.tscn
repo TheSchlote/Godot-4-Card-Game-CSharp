@@ -31,6 +31,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 color = Color(0.101961, 0.282353, 0.176471, 1)
 
 [node name="State" type="Label" parent="."]
@@ -74,3 +75,5 @@ state = 4
 [connection signal="gui_input" from="." to="." method="_OnGuiInput"]
 [connection signal="mouse_entered" from="." to="." method="_OnMouseEntered"]
 [connection signal="mouse_exited" from="." to="." method="_OnMouseExited"]
+[connection signal="area_entered" from="DropPointDetector" to="." method="OnDropPointDetectorAreaEntered"]
+[connection signal="area_exited" from="DropPointDetector" to="." method="OnDropPointDetectorAreaExited"]

@@ -1,5 +1,4 @@
 using Godot;
-using System;
 
 public partial class CardState : Node
 {
@@ -13,37 +12,37 @@ public partial class CardState : Node
 
     public CardUI card_ui;
 
-    public override void _Ready()
+    public virtual void _Ready()
     {
         
     }
 
-    public void Enter()
+    public virtual void Enter()
     {
 
     }
 
-    public void Exit()
+    public virtual void Exit()
     {
 
     }
 
-    public void OnInput(InputEvent @event)
+    public virtual void OnInput(InputEvent @event)
     {
         
     }
 
-    public void OnGUIInput(in InputEvent @event)
+    public virtual void OnGUIInput(InputEvent @event)
     {
 
     }
 
-    public void OnMouseEntered()
+    public virtual void OnMouseEntered()
     {
 
     }
 
-    public void OnMouseExited()
+    public virtual void OnMouseExited()
     {
 
     }

@@ -1,5 +1,4 @@
 using Godot;
-using System;
 using System.Collections.Generic;
 
 public partial class CardStateMachine : Node
@@ -23,8 +22,8 @@ public partial class CardStateMachine : Node
         }
         if (IntialState != null)
         {
-            IntialState.Enter();
             _currentState = IntialState;
+            IntialState.Enter();
         }
     }
 
