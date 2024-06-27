@@ -4,9 +4,9 @@ public partial class CardClickedState : CardState
 {
     public override void Enter()
     {
-        card_ui.Color.Color = new Color(1, (float)0.647059, 0, 1);//ORANGE
-        card_ui.State.Text = "CLICKED";
-        card_ui.GetNode<Area2D>("DropPointDetector").Monitoring = true;
+        Card_UI.Color.Color = new Color(1, (float)0.647059, 0, 1);//ORANGE
+        Card_UI.State.Text = "CLICKED";
+        Card_UI.GetNode<Area2D>("DropPointDetector").Monitoring = true;
     }
 
     public override void OnInput(InputEvent @event)

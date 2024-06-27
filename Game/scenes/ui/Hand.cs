@@ -6,6 +6,7 @@ public partial class Hand : HBoxContainer
     {
         foreach (CardUI child in GetChildren())
         {
+            child.Parent = this;
             child.Connect("ReparentRequested", new Callable(this, nameof(OnCardUIReparentRequested)));
         }
     }

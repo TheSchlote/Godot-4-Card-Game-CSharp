@@ -6,11 +6,15 @@ public partial class CardUI : Control
     [Signal]
     public delegate void ReparentRequestedEventHandler(CardUI whichCardUI);
 
+    [Export]
+    public Card card;
     public ColorRect Color;
     public Label State;
     public Area2D DropPointDetector;
     public CardStateMachine StateMachine;
     public List<Area2D> Targets = new List<Area2D>();
+    public Control Parent;
+    public Tween tween;
 
     public override void _Ready()
     {
@@ -25,6 +29,12 @@ public partial class CardUI : Control
     public override void _Input(InputEvent @event)
     {
         StateMachine.OnInput(@event);
+    }
+
+    public void AnimateToPosition(Vector2 newPosiiton, float duration)
+    {
+        tween = CreateTween().SetTrans(Tween.TransitionType.Circ).SetEase(Tween.EaseType.Out);
+        tween.TweenProperty(this, "position", newPosiiton, duration);
     }
 
     public void _OnGuiInput(InputEvent @event)

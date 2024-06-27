@@ -10,7 +10,7 @@ public partial class CardState : Node
     [Export]
     public State state;
 
-    public CardUI card_ui;
+    public CardUI Card_UI;
 
     public virtual void _Ready()
     {

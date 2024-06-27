@@ -4,7 +4,7 @@ using System.Collections.Generic;
 public partial class CardStateMachine : Node
 {
     [Export]
-    public CardState IntialState { get; set; }
+    public CardState InitialState { get; set; }
 
     private CardState _currentState;
     Dictionary<CardState.State, CardState> _states = new Dictionary<CardState.State, CardState> ();
@@ -17,13 +17,13 @@ public partial class CardStateMachine : Node
             {
                 _states[child.state] = child;
                 child.Connect(nameof(CardState.TransitionRequested), new Callable(this, nameof(OnTransitionRequested)));
-                child.card_ui = card;
+                child.Card_UI = card;
             }
         }
-        if (IntialState != null)
+        if (InitialState != null)
         {
-            _currentState = IntialState;
-            IntialState.Enter();
+            _currentState = InitialState;
+            InitialState.Enter();
         }
     }
 
