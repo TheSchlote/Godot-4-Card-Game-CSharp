@@ -14,6 +14,8 @@ public partial class Card : Resource
     public CardType Type { get; set; }
     [Export]
     public TargetType Target { get; set; }
+    [Export]
+    public int Cost { get; set; }
 
     public bool IsSingleTargeted()
     {

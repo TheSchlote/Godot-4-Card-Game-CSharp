@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CharacterStats" load_steps=4 format=3 uid="uid://cmy4ksfk3mkqe"]
+
+[ext_resource type="Texture2D" uid="uid://cpydvk8mq66o5" path="res://art/tile_0087.png" id="1_hqd6x"]
+[ext_resource type="Script" path="res://custom_resources/CharacterStats.cs" id="1_qjock"]
+[ext_resource type="Resource" uid="uid://cyd3em42ofjh2" path="res://characters/Warrior/WarriorStartingDeck.tres" id="2_1uwd7"]
+
+[resource]
+script = ExtResource("1_qjock")
+StartingDeck = ExtResource("2_1uwd7")
+CardsPerTurn = 4
+MaxMana = 3
+MaxHealth = 35
+Art = ExtResource("1_hqd6x")
