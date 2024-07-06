@@ -6,8 +6,6 @@ public partial class CardAimingState : CardState
     private const float MouseYSnapbackThreshold = 138.0f;
     public override void Enter()
     {
-        Card_UI.Color.Color = new Color((float)0.501961, 0, (float)0.501961, 1);//WEB PURPLE
-        Card_UI.State.Text = "AIMING";
         Card_UI.Targets.Clear();
         Vector2 offset = new Vector2(Card_UI.Parent.Size.X / 2, -Card_UI.Size.Y / 2);
         offset.X -= Card_UI.Size.X / 2;

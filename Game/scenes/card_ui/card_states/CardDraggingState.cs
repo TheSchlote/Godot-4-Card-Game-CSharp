@@ -11,18 +11,23 @@ public partial class CardDraggingState : CardState
         {
             Card_UI.Reparent(uiLayer);
         }
-
-        Card_UI.Color.Color = new Color(0, 0, (float)0.501961, 1); //NAVY BLUE
-        Card_UI.State.Text = "DRAGGING";
+            
+        Card_UI.CardPanel.Set("theme_override_styles/panel", Card_UI.DragStyleBox);
+        Events events = GetNode<Events>("/root/Events");
+        events.EmitSignal(nameof(Events.CardDragStarted), Card_UI);
 
         minimumDragTimeElapsed = false;
         SceneTreeTimer thresholdTimer = GetTree().CreateTimer(DRAG_MINIMUM_THRESHOLD, false);
         thresholdTimer.Timeout += () => minimumDragTimeElapsed = true;
     }
-
+    public override void Exit()
+    {
+        Events events = GetNode<Events>("/root/Events");
+        events.EmitSignal(nameof(Events.CardDragEnded), Card_UI);
+    }
     public override void OnInput(InputEvent @event)
     {
-        bool singleTargeted = Card_UI.card.IsSingleTargeted();
+        bool singleTargeted = Card_UI.Card.IsSingleTargeted();
         bool mouseMotion = @event is InputEventMouseMotion;
         bool cancel = @event.IsActionPressed("right_mouse");
         bool confirm = @event.IsActionReleased("left_mouse") || @event.IsActionPressed("left_mouse");

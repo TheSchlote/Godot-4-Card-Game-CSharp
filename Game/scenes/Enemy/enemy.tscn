@@ -26,3 +26,6 @@ texture = ExtResource("2_juiql")
 [node name="StatsUI" parent="." instance=ExtResource("3_qqs85")]
 offset_top = 7.0
 offset_bottom = 23.0
+
+[connection signal="area_entered" from="." to="." method="OnAreaEntered"]
+[connection signal="area_exited" from="." to="." method="OnAreaExited"]

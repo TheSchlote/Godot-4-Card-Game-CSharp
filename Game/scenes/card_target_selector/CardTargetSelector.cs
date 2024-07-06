@@ -51,7 +51,7 @@ public partial class CardTargetSelector : Node2D
     }
     private void OnCardAimStarted(CardUI card)
     {
-        if (!card.card.IsSingleTargeted())
+        if (!card.Card.IsSingleTargeted())
             return;
 
         targeting = true;

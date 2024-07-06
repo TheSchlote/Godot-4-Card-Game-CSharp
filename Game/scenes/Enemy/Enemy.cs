@@ -61,4 +61,13 @@ public partial class Enemy : Area2D
             QueueFree();
         }
     }
+
+    public void OnAreaEntered(Area2D area)
+    {
+        arrow.Show();
+    }
+    public void OnAreaExited(Area2D area)
+    {
+        arrow.Hide();
+    }
 }
