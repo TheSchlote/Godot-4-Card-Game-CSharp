@@ -10,4 +10,4 @@ Type = 0
 Target = 1
 Cost = 1
 Icon = ExtResource("1_0vuge")
-ToolTipText = ""
+ToolTipText = "[center]Deal [color=\"ff0000\"]6[/color] damage.[/center]"

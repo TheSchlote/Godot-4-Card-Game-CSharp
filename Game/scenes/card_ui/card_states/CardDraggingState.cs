@@ -45,6 +45,8 @@ public partial class CardDraggingState : CardState
 
         if (cancel)
         {
+            Events events = GetNode<Events>("/root/Events");
+            events.EmitSignal("TooltipHide");
             EmitSignal(nameof(TransitionRequested), this, (int)State.Base);
         }
         else if (minimumDragTimeElapsed && confirm)

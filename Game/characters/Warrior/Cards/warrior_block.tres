@@ -10,4 +10,4 @@ Type = 1
 Target = 0
 Cost = 1
 Icon = ExtResource("1_ninvi")
-ToolTipText = ""
+ToolTipText = "[center]Gain [color=\"0044ff\"]5[/color] damage.[/center]"

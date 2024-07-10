@@ -13,5 +13,16 @@ public partial class Events : Node
     public delegate void CardAimEndedEventHandler(CardUI cardUI);
     [Signal]
     public delegate void CardPlayedEventHandler(Card card);
+    [Signal]
+    public delegate void CardTooltipRequestedEventHandler(Card card);
+    [Signal]
+    public delegate void TooltipHideEventHandler();
 
+    //Player related events
+    [Signal]
+    public delegate void PlayerHandDrawnEventHandler();
+    [Signal]
+    public delegate void PlayerHandDiscardedEventHandler();
+    [Signal]
+    public delegate void PlayerTurnEndedEventHandler();
 }

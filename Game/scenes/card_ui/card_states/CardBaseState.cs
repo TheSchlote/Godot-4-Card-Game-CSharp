@@ -37,6 +37,8 @@ public partial class CardBaseState : CardState
             return;
         }
         Card_UI.CardPanel.Set("theme_override_styles/panel", Card_UI.HoverStyleBox);
+        Events events = GetNode<Events>("/root/Events");
+        events.EmitSignal("CardTooltipRequested", Card_UI.Card.Icon, Card_UI.Card.ToolTipText);
     }
 
     public override void OnMouseExited()
@@ -46,5 +48,7 @@ public partial class CardBaseState : CardState
             return;
         }
         Card_UI.CardPanel.Set("theme_override_styles/panel", Card_UI.BaseStyleBox);
+        Events events = GetNode<Events>("/root/Events");
+        events.EmitSignal("TooltipHide");
     }
 }
