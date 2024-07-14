@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://bavmdk3cadlj"]
+
+[ext_resource type="Script" path="res://scenes/Enemy/EnemyActionPicker.cs" id="1_o7tuu"]
+[ext_resource type="Script" path="res://enemies/crab/CrabAttackAction.cs" id="2_xkhb0"]
+[ext_resource type="Script" path="res://enemies/crab/CrabBlockAction.cs" id="3_8lj1n"]
+[ext_resource type="Script" path="res://enemies/crab/MegaBlockAction.cs" id="4_jbo3j"]
+
+[node name="CrabEnemyAI" type="Node"]
+script = ExtResource("1_o7tuu")
+
+[node name="AttackAction" type="Node" parent="."]
+script = ExtResource("2_xkhb0")
+Type = 1
+ChanceWeight = 1.0
+
+[node name="BlockAction" type="Node" parent="."]
+script = ExtResource("3_8lj1n")
+Type = 1
+ChanceWeight = 1.0
+
+[node name="MegaBlockAction" type="Node" parent="."]
+script = ExtResource("4_jbo3j")

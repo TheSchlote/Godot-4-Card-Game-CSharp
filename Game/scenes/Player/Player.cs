@@ -54,8 +54,10 @@ public partial class Player : Node2D
 
         stats.TakeDamage(damage);
 
-        if(stats.Health > 0)
+        if(stats.Health <- 0)
         {
+            Events events = GetNode<Events>("/root/Events");
+            events.EmitSignal("PlayerDied");
             QueueFree();
         }
     }
