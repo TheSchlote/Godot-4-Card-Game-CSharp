@@ -10,6 +10,9 @@ public partial class EnemyAction : Node
     }
 
     [Export]
+    public Intent Intent { get; set; }
+
+    [Export]
     public ActionType Type { get; set; }
 
     [Export(PropertyHint.Range, "0.0,10.0")]

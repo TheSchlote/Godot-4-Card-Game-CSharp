@@ -18,6 +18,7 @@ config/icon="res://icon.png"
 [autoload]
 
 Events="*res://global/Events.cs"
+Shaker="*res://global/Shaker.cs"
 
 [display]
 
@@ -30,6 +31,10 @@ window/stretch/mode="viewport"
 [dotnet]
 
 project/assembly_name="CardGame"
+
+[gui]
+
+theme/custom="res://main_theme.tres"
 
 [input]
 

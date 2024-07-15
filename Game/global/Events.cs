@@ -26,6 +26,8 @@ public partial class Events : Node
     [Signal]
     public delegate void PlayerTurnEndedEventHandler();
     [Signal]
+    public delegate void PlayerHitEventHandler();
+    [Signal]
     public delegate void PlayerDiedEventHandler();
 
     //Enemy related events

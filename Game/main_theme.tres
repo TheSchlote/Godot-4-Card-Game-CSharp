@@ -4,7 +4,7 @@
 [ext_resource type="StyleBox" uid="uid://bi2lbyh1ll1mb" path="res://scenes/card_ui/CardBaseStyleBox.tres" id="1_uauwg"]
 [ext_resource type="StyleBox" uid="uid://nir4hdq70own" path="res://scenes/card_ui/CardHoverStyleBox.tres" id="2_akw82"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ndg8g"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mcrwx"]
 bg_color = Color(0.631373, 0.34902, 0.321569, 0.501961)
 border_width_left = 1
 border_width_top = 1
@@ -12,41 +12,23 @@ border_width_right = 1
 border_width_bottom = 1
 border_color = Color(0.701961, 0.701961, 0.701961, 1)
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1cdbi"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rjr30"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g53gy"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rw5ot"]
 bg_color = Color(0.631373, 0.34902, 0.321569, 1)
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
-border_color = Color(0.756863, 0.713726, 0.388235, 1)
+border_color = Color(0.615686, 0.576471, 0.282353, 1)
 
 [resource]
 default_font = ExtResource("1_60gxe")
 default_font_size = 6
-Button/colors/font_color = Color(0, 0, 0, 1)
-Button/colors/font_disabled_color = Color(0, 0, 0, 1)
-Button/colors/font_focus_color = Color(0, 0, 0, 1)
-Button/colors/font_hover_color = Color(0, 0, 0, 1)
-Button/colors/font_hover_pressed_color = Color(0, 0, 0, 1)
-Button/colors/font_outline_color = Color(0, 0, 0, 1)
-Button/colors/font_pressed_color = Color(0, 0, 0, 1)
-Button/colors/icon_disabled_color = Color(0, 0, 0, 1)
-Button/colors/icon_focus_color = Color(0, 0, 0, 1)
-Button/colors/icon_hover_color = Color(0, 0, 0, 1)
-Button/colors/icon_hover_pressed_color = Color(0, 0, 0, 1)
-Button/colors/icon_normal_color = Color(0, 0, 0, 1)
-Button/colors/icon_pressed_color = Color(0, 0, 0, 1)
-Button/constants/h_separation = 0
-Button/constants/icon_max_width = 0
-Button/constants/outline_size = 0
-Button/font_sizes/font_size = 6
-Button/fonts/font = ExtResource("1_60gxe")
-Button/styles/disabled = SubResource("StyleBoxFlat_ndg8g")
-Button/styles/focus = SubResource("StyleBoxEmpty_1cdbi")
+Button/styles/disabled = SubResource("StyleBoxFlat_mcrwx")
+Button/styles/focus = SubResource("StyleBoxEmpty_rjr30")
 Button/styles/hover = ExtResource("2_akw82")
 Button/styles/normal = ExtResource("1_uauwg")
-Button/styles/pressed = SubResource("StyleBoxFlat_g53gy")
+Button/styles/pressed = SubResource("StyleBoxFlat_rw5ot")
 Panel/styles/panel = ExtResource("1_uauwg")
 PanelContainer/styles/panel = ExtResource("1_uauwg")

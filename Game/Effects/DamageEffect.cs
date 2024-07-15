@@ -15,11 +15,11 @@ public partial class DamageEffect : Effect
 
             if (target is Enemy enemy)
             {
-                enemy.Stats.TakeDamage(Amount);
+                enemy.TakeDamage(Amount);
             }
             else if (target is Player player)
             {
-                player.Stats.TakeDamage(Amount);
+                player.TakeDamage(Amount);
             }
         }
     }

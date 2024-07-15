@@ -8,7 +8,7 @@ public partial class WarriorAxeAttack : Card
     {
         var damageEffect = new DamageEffect
         {
-            Amount = 5
+            Amount = 6
         };
         damageEffect.Execute(targets);
     }

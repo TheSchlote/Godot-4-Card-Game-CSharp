@@ -39,7 +39,7 @@ public partial class Stats : Resource
         EmitSignal(nameof(StatsChanged));
     }
 
-    public void TakeDamage(int damage)
+    public virtual void TakeDamage(int damage, Events events)
     {
         if (damage <= 0)
         {

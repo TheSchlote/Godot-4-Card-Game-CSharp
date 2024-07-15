@@ -2,17 +2,11 @@ using Godot;
 
 public partial class Hand : HBoxContainer
 {
-    public int CardsPlayedThisTurn = 0;
     [Export]
     public CharacterStats CharStats;
 
     public PackedScene CardUiScene = GD.Load<PackedScene>("res://scenes/card_ui/card_ui.tscn");
 
-    public override void _Ready()
-    {
-        Events events = GetNode<Events>("/root/Events");
-        events.Connect(nameof(Events.CardPlayed), new Callable(this, nameof(OnCardPlayed)));
-    }
     public void AddCard(Card card)
     {
         var newCardUi = (CardUI)CardUiScene.Instantiate();
@@ -33,10 +27,6 @@ public partial class Hand : HBoxContainer
         {
             card.Disabled = true;
         }
-    }
-    public void OnCardPlayed(Card card)
-    {
-        CardsPlayedThisTurn += 1;
     }
 
     public void OnCardUIReparentRequested(CardUI child)

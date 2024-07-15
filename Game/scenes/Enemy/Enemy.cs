@@ -5,6 +5,8 @@ using System.Data;
 public partial class Enemy : Area2D
 {
     private const int ArrowOffset = 5;
+    private static readonly Material WhiteSpriteMaterial = (Material)GD.Load("res://art/white_sprite_material.tres");
+
 
     private EnemyStats stats;
     [Export]
@@ -16,6 +18,7 @@ public partial class Enemy : Area2D
     private Sprite2D sprite2D;
     private Sprite2D arrow;
     private StatsUI statsUI;
+    private IntentUI intentUI;
     private EnemyActionPicker enemyActionPicker;
     private EnemyAction currentAction;
 
@@ -30,18 +33,20 @@ public partial class Enemy : Area2D
         sprite2D = GetNode<Sprite2D>("Sprite2D");
         arrow = GetNode<Sprite2D>("Arrow");
         statsUI = GetNode<StatsUI>("StatsUI");
+        intentUI = GetNode<IntentUI>("IntentUI");
     }
     private void SetCurrentAction(EnemyAction value)
     {
         currentAction = value;
         if (currentAction != null)
         {
-            //intentUI.UpdateIntent(currentAction.Intent);
+            intentUI.UpdateIntent(currentAction.Intent);
         }
     }
     private void SetEnemyStats(EnemyStats value)
     {
         stats = (EnemyStats)value.CreateInstance();
+        GD.Print($"Enemy stats set: {stats}");
 
         if (!stats.IsConnected(nameof(Stats.StatsChanged), new Callable(this, nameof(UpdateStats))))
         {
@@ -57,7 +62,6 @@ public partial class Enemy : Area2D
         {
             enemyActionPicker.QueueFree();
         }
-
         EnemyActionPicker newActionPicker = (EnemyActionPicker)stats.AI.Instantiate();
         AddChild(newActionPicker);
         enemyActionPicker = newActionPicker;
@@ -68,16 +72,16 @@ public partial class Enemy : Area2D
         if (enemyActionPicker == null)
             return;
 
-        if (currentAction == null)
+        if (CurrentAction == null)
         {
-            currentAction = enemyActionPicker.GetAction();
+            CurrentAction = enemyActionPicker.GetAction();
             return;
         }
 
         EnemyAction newConditionalAction = enemyActionPicker.GetFirstConditionalAction();
-        if (newConditionalAction != null && currentAction != newConditionalAction)
+        if (newConditionalAction != null && CurrentAction != newConditionalAction)
         {
-            currentAction = newConditionalAction;
+           CurrentAction = newConditionalAction;
         }
     }
     private void UpdateStats()
@@ -100,20 +104,35 @@ public partial class Enemy : Area2D
     {
         stats.Block = 0;
 
-        if (currentAction == null)
+        if (CurrentAction == null)
+        {
             return;
+        }
 
-        currentAction.PerformAction();
+        CurrentAction.PerformAction();
     }
     public void TakeDamage(int damage)
     {
         if (stats.Health <= 0)
             return;
 
-        if (stats.Health <= 0)
+        sprite2D.Material = WhiteSpriteMaterial;
+
+        var tween = CreateTween();
+        tween.TweenCallback(Callable.From(() => Shaker.Shake(this, 16, 0.15f)));
+        Events events = GetNode<Events>("/root/Events");
+        tween.TweenCallback(Callable.From(() => stats.TakeDamage(damage, events)));
+        tween.TweenInterval(0.17f);
+
+        tween.Finished += () =>
         {
-            QueueFree();
-        }
+            sprite2D.Material = null;
+
+            if (stats.Health <= 0)
+            {
+                QueueFree();
+            }
+        };
     }
 
     public void OnAreaEntered(Area2D area)

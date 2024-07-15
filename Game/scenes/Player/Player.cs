@@ -3,6 +3,8 @@ using System;
 
 public partial class Player : Node2D
 {
+    private static readonly Material WhiteSpriteMaterial = (Material)GD.Load("res://art/white_sprite_material.tres");
+
     private CharacterStats stats;
     [Export]
     public CharacterStats Stats
@@ -52,13 +54,24 @@ public partial class Player : Node2D
         if (stats.Health <= 0)
             return;
 
-        stats.TakeDamage(damage);
+        sprite2D.Material = WhiteSpriteMaterial;
 
-        if(stats.Health <- 0)
+        var tween = CreateTween();
+        tween.TweenCallback(Callable.From(() => Shaker.Shake(this, 16, 0.15f)));
+        Events events = GetNode<Events>("/root/Events");
+        tween.TweenCallback(Callable.From(() => stats.TakeDamage(damage, events)));
+        tween.TweenInterval(0.17f);
+
+        tween.Finished += () =>
         {
-            Events events = GetNode<Events>("/root/Events");
-            events.EmitSignal("PlayerDied");
-            QueueFree();
-        }
+            sprite2D.Material = null;
+
+            if (stats.Health <= 0)
+            {
+                Events events = GetNode<Events>("/root/Events");
+                events.EmitSignal(nameof(Events.PlayerDied));
+                QueueFree();
+            }
+        };
     }
 }

@@ -34,7 +34,15 @@ public partial class CharacterStats : Stats
     {
         Mana = MaxMana;
     }
-
+    public override void TakeDamage(int damage, Events events)
+    {
+        int initialHealth = Health;
+        base.TakeDamage(damage, events);
+        if (initialHealth > Health)
+        {
+            events.EmitSignal(nameof(Events.PlayerHit));
+        }
+    }
     public bool CanPlayCard(Card card)
     {
         return Mana >= card.Cost;
