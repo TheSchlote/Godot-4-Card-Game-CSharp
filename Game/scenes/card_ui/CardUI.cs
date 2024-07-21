@@ -50,11 +50,10 @@ public partial class CardUI : Control
         DropPointDetector = GetNode<Area2D>("DropPointDetector");
         StateMachine = GetNode<CardStateMachine>("CardStateMachine");
 
-        Events events = GetNode<Events>("/root/Events");
-        events.Connect(nameof(Events.CardAimStarted), new Callable(this, nameof(OnCardDragOrAimingStarted)));
-        events.Connect(nameof(Events.CardDragStarted), new Callable(this, nameof(OnCardDragOrAimingStarted)));
-        events.Connect(nameof(Events.CardDragEnded), new Callable(this, nameof(OnCardDragOrAimEnded)));
-        events.Connect(nameof(Events.CardAimEnded), new Callable(this, nameof(OnCardDragOrAimEnded)));
+        Events.Instance.Connect(nameof(Events.Instance.CardAimStarted), new Callable(this, nameof(OnCardDragOrAimingStarted)));
+        Events.Instance.Connect(nameof(Events.Instance.CardDragStarted), new Callable(this, nameof(OnCardDragOrAimingStarted)));
+        Events.Instance.Connect(nameof(Events.Instance.CardDragEnded), new Callable(this, nameof(OnCardDragOrAimEnded)));
+        Events.Instance.Connect(nameof(Events.Instance.CardAimEnded), new Callable(this, nameof(OnCardDragOrAimEnded)));
 
 
         StateMachine.Init(this);
@@ -73,8 +72,7 @@ public partial class CardUI : Control
 
     public void Play()
     {
-        Events events = GetNode<Events>("/root/Events");
-        Card.Play(Targets, charStats, events);
+        Card.Play(Targets, charStats);
         QueueFree();
     }
     public void _OnGuiInput(InputEvent @event)

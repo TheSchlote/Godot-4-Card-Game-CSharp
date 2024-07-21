@@ -6,6 +6,7 @@ public partial class DamageEffect : Effect
     public int Amount { get; set; } = 0;
     public override void Execute(Godot.Collections.Array<Node> targets)
     {
+        
         foreach (var target in targets)
         {
             if (target == null)
@@ -15,10 +16,12 @@ public partial class DamageEffect : Effect
 
             if (target is Enemy enemy)
             {
+                SoundPlayer.Instance.Play(Sound);
                 enemy.TakeDamage(Amount);
             }
             else if (target is Player player)
             {
+                SoundPlayer.Instance.Play(Sound);
                 player.TakeDamage(Amount);
             }
         }

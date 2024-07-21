@@ -23,6 +23,8 @@ public partial class Card : Resource
     public Texture Icon { get; set; }
     [Export(PropertyHint.MultilineText)]
     public string ToolTipText { get; set; }
+    [Export]
+    public AudioStream Sound { get; set; }
 
     public bool IsSingleTargeted()
     {
@@ -59,9 +61,9 @@ public partial class Card : Resource
 
         return result;
     }
-    public void Play(Godot.Collections.Array<Node> targets, CharacterStats charStats, Events events)
+    public void Play(Godot.Collections.Array<Node> targets, CharacterStats charStats)
     {
-        events.EmitSignal("CardPlayed", this);
+        Events.Instance.EmitSignal("CardPlayed", this);
         charStats.Mana -= Cost;
 
         if (IsSingleTargeted())

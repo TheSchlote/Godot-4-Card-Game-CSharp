@@ -3,6 +3,7 @@ using System;
 
 public partial class Events : Node
 {
+    public static Events Instance { get; private set; }
     [Signal]
     public delegate void CardDragStartedEventHandler(CardUI cardUI);
     [Signal]
@@ -35,4 +36,13 @@ public partial class Events : Node
     public delegate void EnemyActionCompletedEventHandler();
     [Signal]
     public delegate void EnemyTurnEndedEventHandler();
+
+    //Battle related events
+    [Signal]
+    public delegate void BattleOverScreenRequestedEventHandler();
+
+    public override void _Ready()
+    {
+        Instance = this;
+    }
 }

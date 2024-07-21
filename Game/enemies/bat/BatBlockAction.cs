@@ -1,11 +1,10 @@
 using Godot;
 using System;
 
-public partial class CrabBlockAction : EnemyAction
+public partial class BatBlockAction : EnemyAction
 {
     [Export]
     public int Block { get; set; } = 6;
-
     public override void PerformAction()
     {
         if (Enemy == null || Target == null)
@@ -28,3 +27,4 @@ public partial class CrabBlockAction : EnemyAction
         };
     }
 }
+

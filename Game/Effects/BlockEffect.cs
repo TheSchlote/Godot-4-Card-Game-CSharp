@@ -15,10 +15,12 @@ public partial class BlockEffect : Effect
 
             if (target is Enemy enemy)
             {
+                SoundPlayer.Instance.Play(Sound);
                 enemy.Stats.Block += Amount;
             }
             else if (target is Player player)
             {
+                SoundPlayer.Instance.Play(Sound);
                 player.Stats.Block += Amount;
             }
         }

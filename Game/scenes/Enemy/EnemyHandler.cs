@@ -5,8 +5,7 @@ public partial class EnemyHandler : Node2D
 {
     public override void _Ready()
     {
-        Events events = GetNode<Events>("/root/Events");
-        events.Connect("EnemyActionCompleted", new Callable(this, nameof(OnEnemyActionCompleted)));
+        Events.Instance.Connect("EnemyActionCompleted", new Callable(this, nameof(OnEnemyActionCompleted)));
     }
 
     public void ResetEnemyActions()
@@ -33,8 +32,7 @@ public partial class EnemyHandler : Node2D
     {
         if (enemy.GetIndex() == GetChildCount() - 1)
         {
-            Events events = GetNode<Events>("/root/Events");
-            events.EmitSignal("EnemyTurnEnded");
+            Events.Instance.EmitSignal("EnemyTurnEnded");
             return;
         }
 

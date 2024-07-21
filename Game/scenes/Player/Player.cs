@@ -58,8 +58,7 @@ public partial class Player : Node2D
 
         var tween = CreateTween();
         tween.TweenCallback(Callable.From(() => Shaker.Shake(this, 16, 0.15f)));
-        Events events = GetNode<Events>("/root/Events");
-        tween.TweenCallback(Callable.From(() => stats.TakeDamage(damage, events)));
+        tween.TweenCallback(Callable.From(() => stats.TakeDamage(damage)));
         tween.TweenInterval(0.17f);
 
         tween.Finished += () =>
@@ -68,8 +67,7 @@ public partial class Player : Node2D
 
             if (stats.Health <= 0)
             {
-                Events events = GetNode<Events>("/root/Events");
-                events.EmitSignal(nameof(Events.PlayerDied));
+                Events.Instance.EmitSignal(nameof(Events.Instance.PlayerDied));
                 QueueFree();
             }
         };

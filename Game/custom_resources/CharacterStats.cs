@@ -34,13 +34,13 @@ public partial class CharacterStats : Stats
     {
         Mana = MaxMana;
     }
-    public override void TakeDamage(int damage, Events events)
+    public override void TakeDamage(int damage)
     {
         int initialHealth = Health;
-        base.TakeDamage(damage, events);
+        base.TakeDamage(damage);
         if (initialHealth > Health)
         {
-            events.EmitSignal(nameof(Events.PlayerHit));
+            Events.Instance.EmitSignal(nameof(Events.PlayerHit));
         }
     }
     public bool CanPlayCard(Card card)

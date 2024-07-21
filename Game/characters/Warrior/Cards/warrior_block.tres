@@ -1,6 +1,7 @@
-[gd_resource type="Resource" load_steps=3 format=3 uid="uid://c3trvwyxvoc6s"]
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://c3trvwyxvoc6s"]
 
 [ext_resource type="Texture2D" uid="uid://oe7v35ii8vrs" path="res://art/tile_0102.png" id="1_ninvi"]
+[ext_resource type="AudioStream" uid="uid://df64e7qat73gs" path="res://art/block.ogg" id="2_1qoug"]
 [ext_resource type="Script" path="res://characters/Warrior/Cards/WarriorBlock.cs" id="2_4dhjf"]
 
 [resource]
@@ -11,3 +12,4 @@ Target = 0
 Cost = 1
 Icon = ExtResource("1_ninvi")
 ToolTipText = "[center]Gain [color=\"0044ff\"]5[/color] damage.[/center]"
+Sound = ExtResource("2_1qoug")

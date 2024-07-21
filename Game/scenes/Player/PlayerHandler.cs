@@ -13,8 +13,7 @@ public partial class PlayerHandler : Node
 
     public override void _Ready()
     {
-        Events events = GetNode<Events>("/root/Events");
-        events.Connect("CardPlayed", new Callable(this, nameof(OnCardPlayed)));
+        Events.Instance.Connect("CardPlayed", new Callable(this, nameof(OnCardPlayed)));
     }
 
     public void StartBattle(CharacterStats charStats)
@@ -57,8 +56,7 @@ public partial class PlayerHandler : Node
 
         tween.Finished += () =>
         {
-            Events events = GetNode<Events>("/root/Events");
-            events.EmitSignal("PlayerHandDrawn");
+            Events.Instance.EmitSignal("PlayerHandDrawn");
         };
     }
 
@@ -74,8 +72,7 @@ public partial class PlayerHandler : Node
 
         tween.Finished += () =>
         {
-            Events events = GetNode<Events>("/root/Events");
-            events.EmitSignal("PlayerHandDiscarded");
+            Events.Instance.EmitSignal("PlayerHandDiscarded");
         };
     }
 

@@ -13,8 +13,8 @@ public partial class CardDraggingState : CardState
         }
             
         Card_UI.CardPanel.Set("theme_override_styles/panel", Card_UI.DragStyleBox);
-        Events events = GetNode<Events>("/root/Events");
-        events.EmitSignal(nameof(Events.CardDragStarted), Card_UI);
+
+        Events.Instance.EmitSignal(nameof(Events.CardDragStarted), Card_UI);
 
         minimumDragTimeElapsed = false;
         SceneTreeTimer thresholdTimer = GetTree().CreateTimer(DRAG_MINIMUM_THRESHOLD, false);
@@ -22,8 +22,7 @@ public partial class CardDraggingState : CardState
     }
     public override void Exit()
     {
-        Events events = GetNode<Events>("/root/Events");
-        events.EmitSignal(nameof(Events.CardDragEnded), Card_UI);
+        Events.Instance.EmitSignal(nameof(Events.CardDragEnded), Card_UI);
     }
     public override void OnInput(InputEvent @event)
     {
@@ -45,8 +44,7 @@ public partial class CardDraggingState : CardState
 
         if (cancel)
         {
-            Events events = GetNode<Events>("/root/Events");
-            events.EmitSignal("TooltipHide");
+            Events.Instance.EmitSignal("TooltipHide");
             EmitSignal(nameof(TransitionRequested), this, (int)State.Base);
         }
         else if (minimumDragTimeElapsed && confirm)

@@ -8,7 +8,8 @@ public partial class WarriorBlock : Card
     {
         var blockEffect = new BlockEffect
         {
-            Amount = 5
+            Amount = 5,
+            Sound = Sound
         };
         blockEffect.Execute(targets);
     }

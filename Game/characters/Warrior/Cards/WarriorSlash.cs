@@ -1,16 +1,16 @@
 using Godot;
-using Godot.Collections;
 using System;
 
-public partial class WarriorAxeAttack : Card
+public partial class WarriorSlash : Card
 {
-    public override void ApplyEffects(Array<Node> targets)
-    {
+	public override void ApplyEffects(Godot.Collections.Array<Node> targets)
+	{
         var damageEffect = new DamageEffect
         {
-            Amount = 6,
+            Amount = 4,
             Sound = Sound
         };
         damageEffect.Execute(targets);
     }
 }
+

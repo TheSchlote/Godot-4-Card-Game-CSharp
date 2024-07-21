@@ -120,8 +120,7 @@ public partial class Enemy : Area2D
 
         var tween = CreateTween();
         tween.TweenCallback(Callable.From(() => Shaker.Shake(this, 16, 0.15f)));
-        Events events = GetNode<Events>("/root/Events");
-        tween.TweenCallback(Callable.From(() => stats.TakeDamage(damage, events)));
+        tween.TweenCallback(Callable.From(() => stats.TakeDamage(damage)));
         tween.TweenInterval(0.17f);
 
         tween.Finished += () =>

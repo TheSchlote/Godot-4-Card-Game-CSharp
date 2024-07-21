@@ -12,9 +12,8 @@ public partial class CardTargetSelector : Node2D
     {
         area2D = GetNode<Area2D>("Area2D");
         cardArc = GetNode<Line2D>("CanvasLayer/CardArc");
-        Events events = GetNode<Events>("/root/Events");
-        events.Connect("CardAimStarted", new Callable(this, nameof(OnCardAimStarted)));
-        events.Connect("CardAimEnded", new Callable(this, nameof(OnCardAimEnded)));
+        Events.Instance.Connect("CardAimStarted", new Callable(this, nameof(OnCardAimStarted)));
+        Events.Instance.Connect("CardAimEnded", new Callable(this, nameof(OnCardAimEnded)));
     }
 
     public override void _Process(double delta)

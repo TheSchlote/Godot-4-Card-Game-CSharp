@@ -33,7 +33,8 @@ public partial class MegaBlockAction : EnemyAction
 
         BlockEffect blockEffect = new BlockEffect
         {
-            Amount = Block
+            Amount = Block,
+            Sound = Sound
         };
 
         blockEffect.Execute(new Godot.Collections.Array<Node> { Enemy });
@@ -41,8 +42,7 @@ public partial class MegaBlockAction : EnemyAction
         SceneTreeTimer timer = GetTree().CreateTimer(0.6f, false);
         timer.Timeout += () =>
         {
-            Events events = GetNode<Events>("/root/Events");
-            events.EmitSignal(nameof(Events.EnemyActionCompleted), Enemy);
+            Events.Instance.EmitSignal(nameof(Events.Instance.EnemyActionCompleted), Enemy);
         };
     }
 }

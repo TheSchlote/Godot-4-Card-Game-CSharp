@@ -9,8 +9,7 @@ public partial class CardReleasedState : CardState
 
         if(Card_UI.Targets.Count > 0)
         {
-            Events events = GetNode<Events>("/root/Events");
-            events.EmitSignal("TooltipHide");
+            Events.Instance.EmitSignal("TooltipHide");
             _played = true;
             Card_UI.Play();
         }
@@ -22,8 +21,7 @@ public partial class CardReleasedState : CardState
         {
             return;
         }
-        Events events = GetNode<Events>("/root/Events");
-        events.EmitSignal("TooltipHide");
+        Events.Instance.EmitSignal("TooltipHide");
         EmitSignal(nameof(TransitionRequested), this, (int)State.Base);
     }
 }
